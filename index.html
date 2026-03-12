@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Calculadora Trail</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f4f4f4;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:30px;
+max-width:500px;
+margin:auto;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input,select,button{
+width:100%;
+padding:10px;
+margin-top:10px;
+font-size:16px;
+}
+
+button{
+background:#2c7be5;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+.result{
+margin-top:20px;
+font-size:20px;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Calculadora Trail Running</h2>
+
+<label>Distancia (km)</label>
+<input id="distancia" type="number">
+
+<label>Desnivel positivo (m)</label>
+<input id="desnivel" type="number">
+
+<label>Tipo de terreno</label>
+<select id="terreno">
+<option value="1">Pista facil</option>
+<option value="1.1">Sendero tecnico</option>
+<option value="1.2">Alta montaña</option>
+</select>
+
+<button onclick="calcular()">Calcular tiempo</button>
+
+<div class="result" id="resultado"></div>
+
+</div>
+
+<script>
+
+function calcular(){
+
+let distancia = parseFloat(document.getElementById("distancia").value);
+let desnivel = parseFloat(document.getElementById("desnivel").value);
+let terreno = parseFloat(document.getElementById("terreno").value);
+
+let tiempoDistancia = distancia / 5;
+let tiempoSubida = desnivel / 600;
+
+let tiempoTotal = (tiempoDistancia + tiempoSubida) * terreno;
+
+let horas = Math.floor(tiempoTotal);
+let minutos = Math.round((tiempoTotal - horas) * 60);
+
+document.getElementById("resultado").innerHTML =
+"Tiempo estimado: " + horas + " h " + minutos + " min";
+
+}
+
+</script>
+
+</body>
+</html>
